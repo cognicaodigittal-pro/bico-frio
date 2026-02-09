@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let message = `Olá! Gostaria de um orçamento para:\n`;
             message += `*Serviço:* ${service}\n`;
             message += `*Bairro:* ${neighborhood}\n`;
-            
+
             if (details) {
                 message += `*Modelo/BTUs:* ${details}\n`;
             }
-            
+
             if (obs) {
                 message += `*Obs:* ${obs}`;
             }
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Redirecionar
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
+
             window.open(whatsappUrl, '_blank');
         });
     }
@@ -47,8 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
+
+            if (targetId === '#hero') {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
